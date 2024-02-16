@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import CountryService from "../services/service";
 import Fuse from "fuse.js";
+import { sortCountries, isEqualArray } from "../utils/helpers";
 
-const Catalog = ({ searchTerm }) => {
+const Catalog = ({ searchTerm, sortOrder }) => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filteredCountries, setFilteredCountries] = useState([]);
@@ -34,6 +35,13 @@ const Catalog = ({ searchTerm }) => {
       setFilteredCountries(results.map((result) => result.item));
     }
   }, [searchTerm, countries]);
+
+  useEffect(() => {
+    const sortedCountries = sortCountries(filteredCountries, sortOrder);
+    if (!isEqualArray(sortedCountries, filteredCountries)) {
+      setFilteredCountries(sortedCountries);
+    }
+  }, [sortOrder, filteredCountries]);
 
   return (
     <div>
