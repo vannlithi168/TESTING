@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import CountryService from "../services/service";
 import Fuse from "fuse.js";
-import { sortCountries, isEqualArray } from "../utils/helpers";
+import { sortCountries } from "../utils/helpers";
+import { isEqualArray } from "../utils/helpers";
+import Pagination from "./Pagination";
 
 const Catalog = ({ searchTerm, sortOrder }) => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filteredCountries, setFilteredCountries] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 25;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,11 +47,22 @@ const Catalog = ({ searchTerm, sortOrder }) => {
     }
   }, [sortOrder, filteredCountries]);
 
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  // Calculate indexes for slicing countries array
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredCountries.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
   return (
     <div>
-      <h1>Country Catalog</h1>
       <ul>
-        {filteredCountries.map((country) => (
+        {currentItems.map((country) => (
           <li key={country.cca2}>
             <img
               src={country.flags.png}
@@ -58,6 +73,11 @@ const Catalog = ({ searchTerm, sortOrder }) => {
           </li>
         ))}
       </ul>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(filteredCountries.length / itemsPerPage)}
+        paginate={paginate}
+      />
     </div>
   );
 };

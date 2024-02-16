@@ -6,23 +6,19 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
 
-  const handleSearch = (term) => {
-    setSearchTerm(term);
-  };
-
-  const handleSortToggle = () => {
-    setSortOrder((prevSortOrder) => (prevSortOrder === "asc" ? "desc" : "asc"));
-  };
-
   return (
     <>
       <h1>Countries Around The World</h1>
       <div>
         <SearchBar
           searchTerm={searchTerm}
-          onSearch={handleSearch}
+          onSearch={setSearchTerm}
           sortOrder={sortOrder}
-          onToggleSort={handleSortToggle}
+          onToggleSort={() =>
+            setSortOrder((prevSortOrder) =>
+              prevSortOrder === "asc" ? "desc" : "asc"
+            )
+          }
         />
         <Catalog searchTerm={searchTerm} sortOrder={sortOrder} />
       </div>
