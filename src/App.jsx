@@ -2,10 +2,12 @@ import Catalog from "./components/Catalog";
 
 const App = () => {
   return (
-    <div>
-      <h1>React Countries App</h1>
-      <Catalog />
-    </div>
+    <>
+      <h1>Countries Around The World</h1>
+      <div>
+        <Catalog />
+      </div>
+    </>
   );
 };
 
