@@ -14,24 +14,42 @@ const Modal = ({ country, onClose }) => {
             <img src={country.flags.png} alt={`${country.name.common} flag`} />
             <div className="card-details">
               <p>
-                <strong>Common Name:</strong> {country.name.common}
+                <strong>
+                  Common Name:
+                  <br />
+                </strong>{" "}
+                {country.name.common}
               </p>
               <p>
-                <strong>Official Name:</strong> {country.name.official}
+                <strong>
+                  Official Name: <br />
+                </strong>{" "}
+                {country.name.official}
               </p>
               <p>
-                <strong>Capital:</strong> {country.capital}
+                <strong>
+                  Capital: <br />
+                </strong>{" "}
+                {country.capital}
               </p>
               <p>
-                <strong>Population:</strong> {country.population}
+                <strong>
+                  Population: <br />
+                </strong>{" "}
+                {country.population}
               </p>
               <p>
-                <strong>Region:</strong> {country.region}
+                <strong>
+                  Region: <br />
+                </strong>{" "}
+                {country.region}
               </p>
               <p>
-                <strong>Subregion:</strong> {country.subregion}
+                <strong>
+                  Timezones: <br />
+                </strong>{" "}
+                {country.timezones}
               </p>
-              {/* You can add more details here as needed */}
             </div>
           </div>
         )}

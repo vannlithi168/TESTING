@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Catalog from "./components/Catalog";
 import SearchBar from "./components/SearchBar";
+import "./App.css";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -8,8 +9,8 @@ const App = () => {
 
   return (
     <>
-      <h1>Countries Around The World</h1>
-      <div>
+      <h1>Countries Catalog</h1>
+      <div className="container">
         <SearchBar
           searchTerm={searchTerm}
           onSearch={setSearchTerm}

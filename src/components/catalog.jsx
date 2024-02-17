@@ -4,6 +4,7 @@ import Fuse from "fuse.js";
 import { sortCountries, isEqualArray } from "../utils/helpers";
 import Modal from "./Modal";
 import Pagination from "./Pagination";
+import "../styles/Catalog.css";
 
 const Catalog = ({ searchTerm, sortOrder }) => {
   const [countries, setCountries] = useState([]);
@@ -71,8 +72,8 @@ const Catalog = ({ searchTerm, sortOrder }) => {
   );
 
   return (
-    <div>
-      <ul>
+    <div className="container">
+      <ul className="catalog-container">
         {currentItems.map((country) => (
           <li key={country.cca2} onClick={() => handleOpenModal(country)}>
             <img
@@ -80,7 +81,7 @@ const Catalog = ({ searchTerm, sortOrder }) => {
               alt={`${country.name.official} flag`}
               style={{ width: "30px", marginRight: "10px" }}
             />
-            {country.name.official} ({country.cca2}, {country.cca3})
+            {country.name.official}
           </li>
         ))}
       </ul>
