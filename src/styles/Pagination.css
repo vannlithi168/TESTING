@@ -27,8 +27,42 @@
 }
 
 @media screen and (max-width: 768px) {
+  .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left */
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .pagination button {
+    padding: 8px 16px;
+    margin: 0 4px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .pagination button:first-child {
+    margin-left: 0; /* Remove margin from the first button */
+  }
+
+  .pagination button:hover {
+    background-color: #0056b3;
+  }
+
+  .pagination button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   .pagination button {
     padding: 6px 12px;
     font-size: 14px;
   }
+}
+
 }
