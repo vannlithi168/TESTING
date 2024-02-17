@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import SearchBar from "./components/SearchBar";
 import "./App.css";
-import Catalog from "./components/Catalog";
+import Catalog from "./components/catalog";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
